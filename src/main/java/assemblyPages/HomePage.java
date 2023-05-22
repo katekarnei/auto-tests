@@ -14,7 +14,8 @@ public class HomePage {
     }
 
 
-    private By kits = By.xpath("//div[@id='sidebar-default']//div[contains(@class,'menu-section--configuration')]//ul[@class='submenu fullmenu active']//span[normalize-space()='Kits']");
+    private By kits = By.xpath("//div[@id='sidebar-default']//div[contains(@class,'menu-section--configuration')]//span[normalize-space()='Kits']");
+    ////div[@id='sidebar-default']//div[contains(@class,'menu-section--configuration')]//span[normalize-space()='Kits']
     private By balanceRules = By.xpath("//a[@href='/admin/v3/global_balance_rules/index']");
     private By sortBalanceType = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@data-global-balance-rules-sort_by__balance_type]");
     private By sortAscType = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@data-global-balance-rules-sort_by__balance_type]");
