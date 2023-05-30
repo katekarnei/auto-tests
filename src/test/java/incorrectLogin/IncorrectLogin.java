@@ -26,8 +26,5 @@ public class IncorrectLogin extends BaseTest {
             Assert.assertEquals(logInPage.getErrorAlert(), "INVALID EMAIL OR PASSWORD.",
                     "Wrong message"
             );}
-
-
-
     }
 

@@ -1,9 +1,9 @@
 package assemblyPages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class DisplayRules {
     public WebDriver driver;
@@ -12,32 +12,48 @@ public class DisplayRules {
         this.driver=driver;
     }
 
-    private By createButton = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@data-base-wrapper-table_action_buttons_container]/div[@data-global-display-rules-action-buttons-id!='']/a[@title='Create']/p");
+    private By createButton = By.xpath("//div[@class='v3-table-wrapper']/div[@class='v3-table-button-bar-wrapper']//div[@data-global-display-rules-action-buttons-id!='' and @class='v3-table-button-bar-group' ]//a[@title='Create']");
+    private By namePencilButton = By.xpath("(//table[2]/tbody/tr[@data-global-display-rule-id!='']//div[@data-global-display-rule-name-id!='']//p[@title and not(contains(.,'Save'))]/following-sibling::i)[1]");
+    private By filledItemName = By.xpath("//table[2]//tbody/tr[@data-global-display-rule-id!=''][1]//td[@data-global-display-rule-field_name__name]//p[@data-global-display-rule-name-text_value!='']");
+    private By ItemName = By.xpath("(//table[2]/tbody/tr[not(contains(@style,'display: none'))]//div[not(contains(@style,'display: none'))]//input)[3]");
+    private By searchDisplayRulesBar = By.xpath("//div[@class='v3-table-button-bar-wrapper']/div/div[@class='v3-table-button-bar-group' and @data-global-display-rules-filters-id!='']//input[@data-global-display-rules-filters-search and @placeholder='SEARCH...']");
+    private By toggleSwitch = By.xpath("//table[2]//tbody/tr[@data-global-display-rule-id!=''][1]/td/div/label[@class='slider-checkbox']//span[@class='thumb']");
+    private By deleteButton = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@data-base-wrapper-table_action_buttons_container]/div[@data-global-display-rules-action-buttons-id!='']/a[@title='Delete']/p");
+    private By noDataAvailable = By.xpath("//table[2]/tbody/tr[@data-global-display-rule-id!='']/td[8]");
+    private By qTypePencilButton = By.xpath("(//table[2]//td[@data-global-display-rule-field_name__rule_type!=''][1]//div[@data-global-display-rule-rule-type-id!='']//i)[1]");
+    private By selectqType = By.xpath("(//table[2]//td[@data-global-display-rule-field_name__rule_type!=''][1]//div[@data-global-display-rule-rule-type-id!='']//div[@class='v3-edit-cell v3-edit-dropdown-cell']//label/select)[1]");
+    private By minPencilButton = By.xpath("(//table[2]/tbody/tr[@data-global-display-rule-id!='']//td[@data-global-display-rule-field_name__minimum!='']//div[@data-global-display-rule-minimum-id!='']//p//following-sibling::i)[1]");
+    private By minInputField = By.xpath("(//table[2]//tr[@data-global-display-rule-id!='']//td[@data-global-display-rule-field_name__minimum!='']//div[@data-global-display-rule-minimum-edit_container!='']//input)[1]");
+    private By maxPencilButton = By.xpath("(//table[2]/tbody/tr[@data-global-display-rule-id!='']//td[@data-global-display-rule-field_name__maximum!='']//div[@data-global-display-rule-maximum-id!='']//p/following-sibling::i)[1]");
+    private By maxInputField = By.xpath("(//table[2]/tbody/tr[@data-global-display-rule-id!='']//td[@data-global-display-rule-field_name__maximum!='']//div[@data-global-display-rule-maximum-id!='']//div[@data-global-display-rule-maximum-edit_container!='']//input)[1]");
+    private By searchItemName = By.xpath("//table[2]/tbody/tr[@data-global-display-rule-id!='']/td[@data-global-display-rule-field_name__name!='']/div[@data-global-display-rule-name-id!='']/div/p");
+    private By nameColumnHeader = By.xpath("//table[2]/thead//th[@data-global-display-rules-sort_by__name!='']/div");
+
     public void clickCreateButton(){
         driver.findElement(createButton).click();
 
     }
 
-    private By namePencilButton = By.xpath("(//table[2]/tbody/tr[@data-global-display-rule-id!='']//div[@data-global-display-rule-name-id!='']//p[@title and not(contains(.,'Save'))]/following-sibling::i)[1]");
-    //(//table[2]/tbody/tr[not(contains(@style,'display: none'))]//div[not(contains(@style,'display: none'))]//p[@title and not(contains(.,'Save'))]/following-sibling::i)[1] old locator
-
-    private By filledItemName = By.xpath("//table[2]//tbody/tr[@data-global-display-rule-id!=''][1]//td[@data-global-display-rule-field_name__name]//p[@data-global-display-rule-name-text_value!='']");
-    ////table[2]//tbody/tr[@style!='display: none'][1]/td[@data-global-display-rule-field_name__name]/div[@data-global-display-rule-name-id and @style!='display: none']/div/p old
-    private By ItemName = By.xpath("(//table[2]/tbody/tr[not(contains(@style,'display: none'))]//div[not(contains(@style,'display: none'))]//input)[3]");
-    public void clickNameItemPencil(){
-        driver.findElement(namePencilButton).click();
-    }
     public void setItemName(String itemName){
-        driver.findElement(ItemName).sendKeys(itemName);
-        driver.findElement(ItemName).sendKeys(Keys.ENTER);
+        WebElement element = driver.findElement(namePencilButton);
+        element.click();
+
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("console.log(jQuery(arguments[0]));", element);
+        driver.findElement(ItemName).clear();
+        driver.findElement(ItemName).sendKeys(itemName + Keys.ENTER);
+
     }
 
-    private By searchDisplayRulesBar = By.xpath("//div[@class='v3-table-button-bar-wrapper']/div/div[@class='v3-table-button-bar-group' and @data-global-display-rules-filters-id!='']//input[@data-global-display-rules-filters-search and @placeholder='SEARCH...']");
-    //    private By searchDisplayRulesBar = By.xpath("//div[@class='v3-table-button-bar-wrapper']/div/div[@class='v3-table-button-bar-group' and @style!='display: none']//input[@data-global-display-rules-filters-search]");old
-    public void searchNameItem(String itemName){
+
+    public void editItemName(String editedName){
+        driver.findElement(ItemName).clear();
+        driver.findElement(ItemName).sendKeys(editedName + Keys.ENTER);
+    }
+
+    public void searchingTest(String searchValue){
         driver.findElement(searchDisplayRulesBar).click();
-        driver.findElement(searchDisplayRulesBar).sendKeys(itemName);
-        driver.findElement(searchDisplayRulesBar).sendKeys(Keys.ENTER);
+        driver.findElement(searchDisplayRulesBar).sendKeys(searchValue + Keys.ENTER);
     }
 
     boolean resultContainsVariable;
@@ -52,23 +68,71 @@ public class DisplayRules {
         return resultContainsVariable;
     }
 
-    private By toggleSwitch = By.xpath("//table[2]//tbody/tr[@data-global-display-rule-id!=''][1]/td/div/label[@class='slider-checkbox']//span[@class='thumb']");
-    //    private By toggleSwitch = By.xpath("//table[2]//tbody/tr[@style!='display: none'][1]/td/div/label[@class='slider-checkbox']//span[@class='thumb']"); old
     public void selectToggle(){
         driver.findElement(toggleSwitch).click();
     }
 
-    private By deleteButton = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@data-base-wrapper-table_action_buttons_container]/div[@data-global-display-rules-action-buttons-id!='']/a[@title='Delete']/p");
-    //    private By deleteButton = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@data-base-wrapper-table_action_buttons_container]/div[@data-global-display-rules-action-buttons-id and @style!='display: none']/a[@title='Delete']/p");old
-    public void deleteAnItem(){
+    public void deleteItem(){
         driver.findElement(deleteButton).click();
     }
 
-    private By noDataAvailable = By.xpath("//table[2]/tbody/tr[@data-global-display-rule-id!='']/td[8]");
-    ////table[2]/tbody/tr[@data-global-display-rule-id and @style!='display: none']/td[8]old
+
     public String getNoDataText(){
         return driver.findElement(noDataAvailable).getText();
     }
+
+    public void clickQTypePencil(){
+        driver.findElement(qTypePencilButton).click();
+    }
+
+    public void  clickSelectDropdown(String dropdownValue){
+        WebElement selectElement = driver.findElement(selectqType);
+        Select select = new Select(selectElement);
+        List<WebElement> optionList = select.getOptions();
+        select.selectByVisibleText(dropdownValue);
+        selectElement.sendKeys(Keys.ENTER);
+    }
+
+    public void clickMinPencilButton(){
+        driver.findElement(minPencilButton).click();
+    }
+
+    public void setMinValue(String minimumValue){
+        driver.findElement(minInputField).clear();
+        driver.findElement(minInputField).sendKeys(minimumValue + Keys.ENTER);
+    }
+
+    public void clickMaxPencilButton(){
+        driver.findElement(maxPencilButton).click();
+    }
+
+    public void setMaxValue(String maximumValue){
+        driver.findElement(maxInputField).clear();
+        driver.findElement(maxInputField).sendKeys(maximumValue + Keys.ENTER);
+    }
+
+    public String getItemName(){
+        return driver.findElement(searchItemName).getText();
+    }
+
+    public void getValueNameSorting(){
+        driver.findElement(nameColumnHeader).click();
+        String classValue = driver.findElement(nameColumnHeader).getAttribute("class");
+        if (classValue.equals("asc")){
+            System.out.println("The element contains the value 'asc'.");
+
+        } else if (classValue.equals("desc")){
+            System.out.println("The element contains the value 'desc'.");
+        } else {
+            System.out.println("Sorting has failed");
+        }
+
+
+    }
+
+
+
+
 
 
 

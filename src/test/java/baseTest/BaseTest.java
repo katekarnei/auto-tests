@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
         Dotenv dotenv = Dotenv.configure().load();
 
         // Access environment variables
-       public String userName = dotenv.get("USERNAME");
+        public String userName = dotenv.get("USERNAME");
         public String passCode = dotenv.get("PASSWORD");
         public WebDriver driver;
         public HomePage homePage;
@@ -37,18 +37,11 @@ import java.util.concurrent.TimeUnit;
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
 
-        @Test(priority = 1)
-        public void validLoginTests(){
-            logInPage.setLogin(userName);
-            logInPage.setPassword(passCode);
-            homePage = logInPage.clickLoginButton();
-            System.out.println("Test 1: Signed in successfully");
-        }
 
 
-        @AfterClass
+        /*@AfterClass
         public void exitBrowser(){
             driver.quit();
-        }
+        }*/
     }
 
