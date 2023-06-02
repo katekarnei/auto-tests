@@ -15,15 +15,18 @@ public class HomePage {
 
 
     private By kits = By.xpath("//div[@id='sidebar-default']//div[contains(@class,'menu-section--configuration')]//span[normalize-space()='Kits']");
-    ////div[@id='sidebar-default']//div[contains(@class,'menu-section--configuration')]//span[normalize-space()='Kits']
     private By balanceRules = By.xpath("//a[@href='/admin/v3/global_balance_rules/index']");
     private By sortBalanceType = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@data-global-balance-rules-sort_by__balance_type]");
     private By sortAscType = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@data-global-balance-rules-sort_by__balance_type]");
     private By createdAt = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@class='created-at-col sticky-col w-em-17 sortable']");
     private By searchBar = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@class='v3-table-button-bar-group' and @style!='display: none']/label/input[@placeholder='SEARCH...']");
     private By displayRules = By.xpath("//a[@href='/admin/v3/global_display_rules/index']");
+    private By cutsTab = By.xpath("//a[@href='/admin/v3/global_cuts/index']");
+    private By aluminumFinishRules = By.xpath("//a[@href='/admin/v3/global_aluminum_finish_visibility_rules/index']");
+    private By globalGlassRules = By.xpath("//a[@href='/admin/v3/global_glass_visibility_rules/index']");
 
-   public void clickKits(){
+
+    public void clickKits(){
        driver.findElement(kits).click();
    }
    public void clickBalanceRules(){
@@ -40,6 +43,10 @@ public class HomePage {
        driver.findElement(createdAt).click();
    }
 
+   public void clickCutsTab(){
+        driver.findElement(cutsTab).click();
+   }
+
 
    public void sendKeysSearchBar(String variable){
        driver.findElement(searchBar).click();
@@ -48,8 +55,8 @@ public class HomePage {
    public void clickEnter(){
        driver.findElement(searchBar).sendKeys(Keys.ENTER);
    }
-    boolean allResultsContainQuery;
- public boolean searchRes(String variable1){
+   boolean allResultsContainQuery;
+    public boolean searchRes(String variable1){
     WebElement searchResults = driver.findElement(sortBalanceType);
 
     if (!searchResults.getText().contains(variable1)) {
@@ -59,6 +66,15 @@ public class HomePage {
         System.out.println("Search results correspond to the search request");
     return allResultsContainQuery;
         }
+
+    public void clickAluminumFinish(){
+        driver.findElement(aluminumFinishRules).click();
+    }
+    public void clickGlassRules(){
+        driver.findElement(globalGlassRules).click();
+    }
+
+
 
     }
 

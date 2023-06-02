@@ -1,5 +1,7 @@
 package baseTest;
 
+import assemblyPages.CutsPage;
+import assemblyPages.GlassRules;
 import assemblyPages.HomePage;
 import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvBuilder;
@@ -15,15 +17,14 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
     public class BaseTest {
-        // Load the .env file
         Dotenv dotenv = Dotenv.configure().load();
-
-        // Access environment variables
         public String userName = dotenv.get("USERNAME");
         public String passCode = dotenv.get("PASSWORD");
         public WebDriver driver;
         public HomePage homePage;
         public LogInPage logInPage;
+        public GlassRules glassRules;
+
         @BeforeClass
         public void setUp(){
             System.setProperty("webdriver.chrome.driver", "resources/chromedriver");

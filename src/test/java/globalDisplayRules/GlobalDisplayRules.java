@@ -39,15 +39,7 @@ public class GlobalDisplayRules extends BaseTest {
         displayRules.setMaxValue("5");
 
     }
-    @Test(priority = 4, dependsOnMethods = {"validLoginTests","findDisplayRules"})
-    public void searchValueTest(){
-        DisplayRules displayRules = new DisplayRules(driver);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        displayRules.searchingTest("[TEST] ITEM 1");
-        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        Assert.assertEquals(displayRules.getItemName(), "[TEST] ITEM 1", "Wrong message");
-    }
-    @Test(priority=5, dependsOnMethods = {"validLoginTests","findDisplayRules"})
+    @Test(priority=4, dependsOnMethods = {"validLoginTests","findDisplayRules"})
     public void sortingTable(){
         DisplayRules displayRules = new DisplayRules(driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -60,6 +52,15 @@ public class GlobalDisplayRules extends BaseTest {
         displayRules.setItemName("[TEST] SORTING ITEM 2");
         displayRules.searchingTest("[TEST] SORTING ITEM");
         displayRules.getValueNameSorting();
+    }
+
+    @Test(priority = 5, dependsOnMethods = {"validLoginTests","findDisplayRules"})
+    public void searchValueTest(){
+        DisplayRules displayRules = new DisplayRules(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        displayRules.searchingTest("[TEST] ITEM 1");
+        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
+        Assert.assertEquals(displayRules.getItemName(), "[TEST] ITEM 1", "Wrong message");
     }
 
     @Test(priority = 6,dependsOnMethods = {"validLoginTests","findDisplayRules",})
