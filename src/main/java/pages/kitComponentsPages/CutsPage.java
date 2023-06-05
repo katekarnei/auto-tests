@@ -1,12 +1,14 @@
-package assemblyPages;
+package pages.kitComponentsPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import pages.V3Table;
 
-public class CutsPage {
+public class CutsPage extends V3Table {
     public WebDriver driver;
     public CutsPage(WebDriver driver){
+        super(driver);
         this.driver = driver;
     }
 
@@ -65,10 +67,10 @@ public class CutsPage {
             System.out.println("Sorting has failed");
         }
     }
-    public void selectToggle(){
+    public void selectToggleButton(){
         driver.findElement(toggleSwitch).click();
     }
-    public void deleteCutsItem(){
+    public void clickDeleteButton(){
         driver.findElement(deleteButton).click();
     }
     public String getNoDataText(){

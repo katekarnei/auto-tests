@@ -1,14 +1,16 @@
-package assemblyPages;
+package pages.kitComponentsPages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import pages.V3Table;
 
 import java.util.List;
 
-public class DisplayRules {
+public class DisplayRulesPage extends V3Table {
     public WebDriver driver;
 
-    public DisplayRules(WebDriver driver){
+    public DisplayRulesPage(WebDriver driver){
+        super(driver);
         this.driver=driver;
     }
 
@@ -68,11 +70,11 @@ public class DisplayRules {
         return resultContainsVariable;
     }
 
-    public void selectToggle(){
+    public void selectToggleButton(){
         driver.findElement(toggleSwitch).click();
     }
 
-    public void deleteItem(){
+    public void clickDeleteButton(){
         driver.findElement(deleteButton).click();
     }
 
@@ -115,7 +117,7 @@ public class DisplayRules {
         return driver.findElement(searchItemName).getText();
     }
 
-    public void getValueNameSorting(){
+    public void sortByName(){
         driver.findElement(nameColumnHeader).click();
         String classValue = driver.findElement(nameColumnHeader).getAttribute("class");
         if (classValue.equals("asc")){

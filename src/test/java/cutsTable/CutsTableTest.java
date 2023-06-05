@@ -1,6 +1,6 @@
 package cutsTable;
 
-import assemblyPages.CutsPage;
+import pages.kitComponentsPages.CutsPage;
 import baseTest.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -78,9 +78,9 @@ public class CutsTableTest extends BaseTest {
         cutsPage.setCutsName("[TEST] NAME TO BE DELETED");
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
         cutsPage.searchCuts("[TEST] NAME TO BE DELETED");
-        cutsPage.selectToggle();
+        cutsPage.selectToggleButton();
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        cutsPage.deleteCutsItem();
+        cutsPage.clickDeleteButton();
         Assert.assertEquals(cutsPage.getNoDataText(), "NO DATA AVAILABLE", "Wrong message");
     }
 

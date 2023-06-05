@@ -1,13 +1,15 @@
-package assemblyPages;
+package pages.kitComponentsPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import pages.V3Table;
 
-public class GlassRules {
+public class GlassRulesPage extends V3Table {
     public WebDriver driver;
 
-    public GlassRules(WebDriver driver){
+    public GlassRulesPage(WebDriver driver){
+        super(driver);
         this.driver=driver;
     }
 
@@ -34,7 +36,7 @@ public class GlassRules {
     public void clickDropdown(){
         driver.findElement(selectDropdown).click();
     }
-    public void searchValue(String searchValue){
+    public void searchDropdownValue(String searchValue){
         driver.findElement(dropdownSearchField).click();
         driver.findElement(dropdownSearchField).sendKeys(searchValue);
     }
@@ -49,17 +51,17 @@ public class GlassRules {
         return driver.findElement(searchText).getText();
 
     }
-    public void selectToggle(){
+    public void selectToggleButton(){
         driver.findElement(toggleButton).click();
     }
-    public void deleteItem(){
+    public void clickDeleteButton(){
         driver.findElement(deleteButton).click();
     }
-    public String findNoDataText(){
+    public String getNoDataText(){
         return driver.findElement(noDataText).getText();
     }
 
-    public void sortName(){
+    public void sortByName(){
         driver.findElement(glassRuleNameHeader).click();
         String classValue = driver.findElement(glassRuleNameHeader).getAttribute("class");
         if (classValue.equals("asc")){

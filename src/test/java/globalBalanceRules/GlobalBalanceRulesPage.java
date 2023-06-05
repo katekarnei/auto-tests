@@ -1,11 +1,10 @@
 package globalBalanceRules;
 
-import assemblyPages.HomePage;
 import baseTest.BaseTest;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.kitComponentsPages.BalanceRulesPage;
 
-public class GlobalBalanceRules extends BaseTest {
+public class GlobalBalanceRulesPage extends BaseTest {
 
     @Test(priority = 1)
     public void validLoginTests(){
@@ -15,6 +14,7 @@ public class GlobalBalanceRules extends BaseTest {
     }
     @Test(priority = 2, dependsOnMethods = "validLoginTests")
     public void testGlobalBalanceRules(){
+        BalanceRulesPage balanceRulesPage = new BalanceRulesPage(driver);
         homePage.clickKits();
         homePage.clickBalanceRules();
         //check how long http query took
@@ -23,15 +23,14 @@ public class GlobalBalanceRules extends BaseTest {
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
         System.out.println("Page loaded in " + duration + " milliseconds");
-        homePage.setSortBalanceType();
-        homePage.setSortAscType();//need to add some checks to verify sorting
-        homePage.clickCreatedAt();
+        balanceRulesPage.sortByName();//need to add some checks to verify sorting
+        balanceRulesPage.sortByCreatedAt();
     }
     @Test (priority = 3, dependsOnMethods = {"validLoginTests", "testGlobalBalanceRules"})
     public void testSearchByBalanceType(){
-        homePage.sendKeysSearchBar("SPIRAL");// BT or SPIRAL
-        homePage.clickEnter();
-        homePage.searchRes("SPIRAL");// BT or SPIRAL
+        BalanceRulesPage balanceRulesPage = new BalanceRulesPage(driver);
+        balanceRulesPage.sendKeysSearchBar("SPIRAL");// BT or SPIRAL
+        balanceRulesPage.searchRes("SPIRAL");// BT or SPIRAL
     }
 
 }

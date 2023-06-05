@@ -1,12 +1,14 @@
-package assemblyPages;
+package pages.kitComponentsPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import pages.V3Table;
 
-public class AlumFinishRulesPage {
+public class AlumFinishRulesPage extends V3Table {
     public WebDriver driver;
     public AlumFinishRulesPage(WebDriver driver){
+        super(driver);
         this.driver=driver;
     }
     private By createButton = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@data-base-wrapper-table_action_buttons_container]/div[@data-global-aluminum-finish-visibility-rules-action-buttons-id!='']/a[@title='Create']");
@@ -50,10 +52,10 @@ public class AlumFinishRulesPage {
         return driver.findElement(noDataText).getText();
     }
 
-    public void deleteItem(){
+    public void clickDeleteButton(){
         driver.findElement(deleteButton).click();
     }
-    public void selectToggle(){
+    public void selectToggleButton(){
         driver.findElement(toggleSwitch).click();
     }
     public void sortByName(){

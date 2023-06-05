@@ -1,18 +1,13 @@
 package baseTest;
 
-import assemblyPages.CutsPage;
-import assemblyPages.GlassRules;
-import assemblyPages.HomePage;
+import pages.HomePage;
 import io.github.cdimascio.dotenv.Dotenv;
-import io.github.cdimascio.dotenv.DotenvBuilder;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import assemblyPages.LogInPage;
+import pages.LogInPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,8 +18,6 @@ import java.util.concurrent.TimeUnit;
         public WebDriver driver;
         public HomePage homePage;
         public LogInPage logInPage;
-        public GlassRules glassRules;
-
         @BeforeClass
         public void setUp(){
             System.setProperty("webdriver.chrome.driver", "resources/chromedriver");

@@ -1,6 +1,6 @@
 package aluminumFinishRulesTest;
 
-import assemblyPages.AlumFinishRulesPage;
+import pages.kitComponentsPages.AlumFinishRulesPage;
 import baseTest.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -64,8 +64,8 @@ public class AluminumFinishRulesTest extends BaseTest {
         alumFinishRulesPage.searchByName("[TEST] FINISH");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        alumFinishRulesPage.selectToggle();
-        alumFinishRulesPage.deleteItem();
+        alumFinishRulesPage.selectToggleButton();
+        alumFinishRulesPage.clickDeleteButton();
         Assert.assertEquals(alumFinishRulesPage.getNoDataText(), "NO DATA AVAILABLE", "No such message");
     }
 

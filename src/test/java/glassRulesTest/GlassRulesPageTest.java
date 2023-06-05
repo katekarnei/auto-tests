@@ -1,6 +1,6 @@
 package glassRulesTest;
 
-import assemblyPages.GlassRules;
+import pages.kitComponentsPages.GlassRulesPage;
 import baseTest.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class GlassRulesTest extends BaseTest {
+public class GlassRulesPageTest extends BaseTest {
 
     @Test(priority = 1)
     public void validLoginTests(){
@@ -25,37 +25,37 @@ public class GlassRulesTest extends BaseTest {
     }
     @Test(priority = 3, dependsOnMethods = {"validLoginTests","findGlassRules"})
     public void createNewItem(){
-        GlassRules glassRules = new GlassRules(driver);
-        glassRules.clickCreateButton();
+        GlassRulesPage glassRulesPage = new GlassRulesPage(driver);
+        glassRulesPage.clickCreateButton();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        glassRules.clickPencilButton();
-        glassRules.clickDropdown();
-        glassRules.searchValue("[TEST] COLOR");
+        glassRulesPage.clickPencilButton();
+        glassRulesPage.clickDropdown();
+        glassRulesPage.searchDropdownValue("[TEST] COLOR");
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        glassRules.saveInput();
+        glassRulesPage.saveInput();
     }
     @Test(priority = 4, dependsOnMethods = {"validLoginTests","findGlassRules"} )
     public void searchItem(){
-        GlassRules glassRules = new GlassRules(driver);
+        GlassRulesPage glassRulesPage = new GlassRulesPage(driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        glassRules.searchItem(" 0\" [TEST] COLOR");
+        glassRulesPage.searchItem(" 0\" [TEST] COLOR");
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        Assert.assertEquals(glassRules.getSearchText(), "0\" [TEST] COLOR", "Wrong message");
+        Assert.assertEquals(glassRulesPage.getSearchText(), "0\" [TEST] COLOR", "Wrong message");
     }
     @Test(priority = 5, dependsOnMethods = {"validLoginTests","findGlassRules","searchItem"})
     public void deleteItem(){
-        GlassRules glassRules = new GlassRules(driver);
+        GlassRulesPage glassRulesPage = new GlassRulesPage(driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        glassRules.selectToggle();
-        glassRules.deleteItem();
+        glassRulesPage.selectToggleButton();
+        glassRulesPage.clickDeleteButton();
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        Assert.assertEquals(glassRules.findNoDataText(), "NO DATA AVAILABLE", "Wrong message");
+        Assert.assertEquals(glassRulesPage.getNoDataText(), "NO DATA AVAILABLE", "Wrong message");
     }
     @Test(priority = 6, dependsOnMethods = {"validLoginTests","findGlassRules"})
     public void testSorting(){
-        GlassRules glassRules = new GlassRules(driver);
-        glassRules.sortName();
+        GlassRulesPage glassRulesPage = new GlassRulesPage(driver);
+        glassRulesPage.sortByName();
 
     }
 
