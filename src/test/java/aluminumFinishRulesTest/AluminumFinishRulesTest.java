@@ -55,7 +55,6 @@ public class AluminumFinishRulesTest extends BaseTest {
     @Test(priority = 2, dependsOnMethods = {"validLoginTests","findAluminumFinishRules"})
     public void sortAluminumItem(){
         AlumFinishRulesPage alumFinishRulesPage = new AlumFinishRulesPage(driver);
-        alumFinishRulesPage.searchByName("[TEST] FINISH");
         alumFinishRulesPage.sortByName();
     }
     @Test(priority = 2, dependsOnMethods = {"validLoginTests","findAluminumFinishRules"})

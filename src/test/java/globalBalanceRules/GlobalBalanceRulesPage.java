@@ -1,8 +1,13 @@
 package globalBalanceRules;
 
 import baseTest.BaseTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import pages.kitComponentsPages.BalanceRulesPage;
+
+import java.time.Duration;
 
 public class GlobalBalanceRulesPage extends BaseTest {
 
@@ -13,8 +18,7 @@ public class GlobalBalanceRulesPage extends BaseTest {
         homePage = logInPage.clickLoginButton();
     }
     @Test(priority = 2, dependsOnMethods = "validLoginTests")
-    public void testGlobalBalanceRules(){
-        BalanceRulesPage balanceRulesPage = new BalanceRulesPage(driver);
+    public void findBalanceRulesTab(){
         homePage.clickKits();
         homePage.clickBalanceRules();
         //check how long http query took
@@ -23,10 +27,16 @@ public class GlobalBalanceRulesPage extends BaseTest {
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
         System.out.println("Page loaded in " + duration + " milliseconds");
-        balanceRulesPage.sortByName();//need to add some checks to verify sorting
-        balanceRulesPage.sortByCreatedAt();
     }
-    @Test (priority = 3, dependsOnMethods = {"validLoginTests", "testGlobalBalanceRules"})
+
+    @Test(priority = 3, dependsOnMethods = {"validLoginTests","findBalanceRulesTab"})
+    public void testBalanceRulesSorting(){
+        BalanceRulesPage balanceRulesPage = new BalanceRulesPage(driver);
+        balanceRulesPage.sortByName();
+
+
+    }
+    @Test (priority = 4, dependsOnMethods = {"validLoginTests","findBalanceRulesTab"})
     public void testSearchByBalanceType(){
         BalanceRulesPage balanceRulesPage = new BalanceRulesPage(driver);
         balanceRulesPage.sendKeysSearchBar("SPIRAL");// BT or SPIRAL

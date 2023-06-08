@@ -44,17 +44,8 @@ public class CutsTableTest extends BaseTest {
         Assert.assertEquals(cutsPage.getCutsName(), "[TEST] CUTS NAME", "Wrong message");
     }
     @Test(priority = 4, dependsOnMethods = {"validLoginTests","findCuts"})
-    public void sortingCuts(){
+    public void testCutsSorting(){
         CutsPage cutsPage = new CutsPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        cutsPage.clickCreateButton();
-        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        cutsPage.setCutsName("[TEST] SORTING CUTS NAME 1");
-        cutsPage.clickCreateButton();
-        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        cutsPage.setCutsName("[TEST] SORTING CUTS NAME 2");
-        cutsPage.searchCuts("[TEST] SORTING CUTS NAME");
         cutsPage.sortByName();
     }
     @Test(priority = 5, dependsOnMethods = {"validLoginTests","findCuts"})
@@ -83,12 +74,5 @@ public class CutsTableTest extends BaseTest {
         cutsPage.clickDeleteButton();
         Assert.assertEquals(cutsPage.getNoDataText(), "NO DATA AVAILABLE", "Wrong message");
     }
-
-
-
-
-
-
-
 
 }

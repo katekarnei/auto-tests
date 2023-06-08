@@ -42,16 +42,7 @@ public class GlobalDisplayRulesPage extends BaseTest {
     @Test(priority=4, dependsOnMethods = {"validLoginTests","findDisplayRules"})
     public void sortingTable(){
         DisplayRulesPage displayRulesPage = new DisplayRulesPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        displayRulesPage.clickCreateButton();
-        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        displayRulesPage.setItemName("[TEST] SORTING ITEM 1");
-        displayRulesPage.clickCreateButton();
-        wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
-        displayRulesPage.setItemName("[TEST] SORTING ITEM 2");
-        displayRulesPage.searchingTest("[TEST] SORTING ITEM");
-        displayRulesPage.getValueNameSorting();
+        displayRulesPage.sortByName();
     }
 
     @Test(priority = 5, dependsOnMethods = {"validLoginTests","findDisplayRules"})

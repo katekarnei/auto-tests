@@ -36,15 +36,15 @@ public class GlassRulesPageTest extends BaseTest {
         glassRulesPage.saveInput();
     }
     @Test(priority = 4, dependsOnMethods = {"validLoginTests","findGlassRules"} )
-    public void searchItem(){
+    public void searchGlassRulesItem(){
         GlassRulesPage glassRulesPage = new GlassRulesPage(driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         glassRulesPage.searchItem(" 0\" [TEST] COLOR");
         wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.cssSelector("tr.v3-loader"))));
         Assert.assertEquals(glassRulesPage.getSearchText(), "0\" [TEST] COLOR", "Wrong message");
     }
-    @Test(priority = 5, dependsOnMethods = {"validLoginTests","findGlassRules","searchItem"})
-    public void deleteItem(){
+    @Test(priority = 5, dependsOnMethods = {"validLoginTests","findGlassRules","searchGlassRulesItem"})
+    public void deleteGlassRulesItem(){
         GlassRulesPage glassRulesPage = new GlassRulesPage(driver);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         glassRulesPage.selectToggleButton();
@@ -53,7 +53,7 @@ public class GlassRulesPageTest extends BaseTest {
         Assert.assertEquals(glassRulesPage.getNoDataText(), "NO DATA AVAILABLE", "Wrong message");
     }
     @Test(priority = 6, dependsOnMethods = {"validLoginTests","findGlassRules"})
-    public void testSorting(){
+    public void testGlassRulesSorting(){
         GlassRulesPage glassRulesPage = new GlassRulesPage(driver);
         glassRulesPage.sortByName();
 
