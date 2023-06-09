@@ -2,7 +2,6 @@ package pages.kitComponentsPages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-import pages.V3Table;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class DisplayRulesPage extends V3Table {
 
     public DisplayRulesPage(WebDriver driver){
         super(driver);
-        this.xPathNameColumnHeader = By.xpath("//table[2]/thead//th[@data-global-display-rules-sort_by__name!='']/div");
+        //this.xPathNameColumnHeader = By.xpath("//table[2]/thead//th[@data-global-display-rules-sort_by__name!='']/div");
         this.xPathOfCreateButton =  By.xpath("//div[@class='v3-table-wrapper']/div[@class='v3-table-button-bar-wrapper']//div[@data-global-display-rules-action-buttons-id!='' and @class='v3-table-button-bar-group' ]//a[@title='Create']");
         this.xPathOfDeleteButton = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@data-base-wrapper-table_action_buttons_container]/div[@data-global-display-rules-action-buttons-id!='']/a[@title='Delete']/p");
         this.xPathOfToggleButton = By.xpath("//table[2]//tbody/tr[@data-global-display-rule-id!=''][1]/td/div/label[@class='slider-checkbox']//span[@class='thumb']");

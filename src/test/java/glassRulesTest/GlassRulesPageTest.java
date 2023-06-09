@@ -55,7 +55,7 @@ public class GlassRulesPageTest extends BaseTest {
     @Test(priority = 6, dependsOnMethods = {"validLoginTests","findGlassRules"})
     public void testGlassRulesSorting(){
         GlassRulesPage glassRulesPage = new GlassRulesPage(driver);
-        glassRulesPage.sortByName();
+        glassRulesPage.testColumnsSorting();
 
     }
 

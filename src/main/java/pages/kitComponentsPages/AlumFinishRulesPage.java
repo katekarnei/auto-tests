@@ -3,7 +3,6 @@ package pages.kitComponentsPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pages.V3Table;
 
 public class AlumFinishRulesPage extends V3Table {
     public WebDriver driver;
@@ -13,7 +12,7 @@ public class AlumFinishRulesPage extends V3Table {
         this.xPathOfDeleteButton = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@data-base-wrapper-table_action_buttons_container]/div[@data-global-aluminum-finish-visibility-rules-action-buttons-id!='']/a[@title='Delete']");
         this.xPathOfToggleButton = By.xpath("//table[@data-global-aluminum-finish-visibility-rules-id!='']/tbody/tr[@data-global-aluminum-finish-visibility-rule-id!='']//label[@class='slider-checkbox']//span[@class='thumb']");
         this.xPathNoDataText = By.xpath("//table[@data-global-aluminum-finish-visibility-rules-id!='']/tbody/tr[@data-global-aluminum-finish-visibility-rule-id!='']//td[normalize-space()='No data available']");
-        this.xPathNameColumnHeader = By.xpath("//table[@data-global-aluminum-finish-visibility-rules-id!='']/thead/tr[1]/th[@data-global-aluminum-finish-visibility-rules-sort_by__aluminum_finish_name]/div");
+        //this.xPathNameColumnHeader = By.xpath("//table[@data-global-aluminum-finish-visibility-rules-id!='']/thead/tr[1]/th[@data-global-aluminum-finish-visibility-rules-sort_by__aluminum_finish_name]/div");
 
 
     }

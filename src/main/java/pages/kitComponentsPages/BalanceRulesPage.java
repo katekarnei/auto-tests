@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pages.V3Table;
 
 import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
@@ -13,7 +12,7 @@ public class BalanceRulesPage extends V3Table {
 
     public BalanceRulesPage(WebDriver driver){
         super(driver);
-        this.xPathNameColumnHeader = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@data-global-balance-rules-sort_by__balance_type]/div");
+        //this.xPathNameColumnHeader = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@data-global-balance-rules-sort_by__balance_type]/div");
     }
 
 

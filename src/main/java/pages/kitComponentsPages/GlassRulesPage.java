@@ -3,7 +3,6 @@ package pages.kitComponentsPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pages.V3Table;
 
 public class GlassRulesPage extends V3Table {
     public WebDriver driver;
@@ -14,7 +13,7 @@ public class GlassRulesPage extends V3Table {
         this.xPathOfDeleteButton = By.xpath("//div[@class='v3-table-button-bar-wrapper']/div[@data-base-wrapper-table_action_buttons_container!='']//a[@data-global-glass-visibility-rules-action-buttons-delete_button!='']");
         this.xPathOfToggleButton = By.xpath("//tr[@data-global-glass-visibility-rule-id!='']/td//span[@class='thumb']");
         this.xPathNoDataText = By.xpath("//td[normalize-space()='No data available']");
-        this.xPathNameColumnHeader = By.xpath("//table[@data-global-glass-visibility-rules-id!='']/thead/tr/th[@data-global-glass-visibility-rules-sort_by__glass_name!='']/div");
+        //this.xPathNameColumnHeader = By.xpath("//table[@data-global-glass-visibility-rules-id!='']/thead/tr/th[@data-global-glass-visibility-rules-sort_by__glass_name!='']/div");
 
     }
 

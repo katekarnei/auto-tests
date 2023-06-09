@@ -42,7 +42,7 @@ public class GlobalDisplayRulesPage extends BaseTest {
     @Test(priority=4, dependsOnMethods = {"validLoginTests","findDisplayRules"})
     public void sortingTable(){
         DisplayRulesPage displayRulesPage = new DisplayRulesPage(driver);
-        displayRulesPage.sortByName();
+        displayRulesPage.testColumnsSorting();
     }
 
     @Test(priority = 5, dependsOnMethods = {"validLoginTests","findDisplayRules"})

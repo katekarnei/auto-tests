@@ -3,7 +3,6 @@ package pages.kitComponentsPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pages.V3Table;
 
 public class CutsPage extends V3Table {
     public WebDriver driver;
@@ -11,7 +10,7 @@ public class CutsPage extends V3Table {
         super(driver);
         this.driver=driver;
         this.xPathOfCreateButton = By.xpath("//div[@class='v3-table-wrapper']/div[@class='v3-table-button-bar-wrapper']//div[@data-global-cuts-action-buttons-id!='' and @class='v3-table-button-bar-group']//a[@title='Create']");
-        this.xPathNameColumnHeader = By.xpath("//table[2]/thead//th[@data-global-cuts-sort_by__name!='']/div");
+        //this.xPathNameColumnHeader = By.xpath("//table[2]/thead//th[@data-global-cuts-sort_by__name!='']/div");
         this.xPathOfToggleButton = By.xpath("//table[2]/tbody/tr[@data-global-cut-id!='']/td//label[@class='slider-checkbox']");
         this.xPathOfDeleteButton = By.xpath("//div[@class='v3-table-wrapper']/div[@class='v3-table-button-bar-wrapper']//div[@data-global-cuts-action-buttons-id!='' and @class='v3-table-button-bar-group']//a[@title='Delete']");
         this.xPathNoDataText = By.xpath("//table[2]/tbody/tr[@data-global-cut-id!='']/td[normalize-space()='No data available']");

@@ -46,7 +46,7 @@ public class CutsTableTest extends BaseTest {
     @Test(priority = 4, dependsOnMethods = {"validLoginTests","findCuts"})
     public void testCutsSorting(){
         CutsPage cutsPage = new CutsPage(driver);
-        cutsPage.sortByName();
+        cutsPage.testColumnsSorting();
     }
     @Test(priority = 5, dependsOnMethods = {"validLoginTests","findCuts"})
     public void editCutsName(){

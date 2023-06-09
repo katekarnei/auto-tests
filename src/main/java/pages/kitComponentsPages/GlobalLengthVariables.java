@@ -2,7 +2,6 @@ package pages.kitComponentsPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.V3Table;
 
 public class GlobalLengthVariables extends V3Table {
     public WebDriver driver;

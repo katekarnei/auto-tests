@@ -1,13 +1,8 @@
 package globalBalanceRules;
 
 import baseTest.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import pages.kitComponentsPages.BalanceRulesPage;
-
-import java.time.Duration;
 
 public class GlobalBalanceRulesPage extends BaseTest {
 
@@ -32,7 +27,7 @@ public class GlobalBalanceRulesPage extends BaseTest {
     @Test(priority = 3, dependsOnMethods = {"validLoginTests","findBalanceRulesTab"})
     public void testBalanceRulesSorting(){
         BalanceRulesPage balanceRulesPage = new BalanceRulesPage(driver);
-        balanceRulesPage.sortByName();
+        balanceRulesPage.testColumnsSorting();
 
 
     }
