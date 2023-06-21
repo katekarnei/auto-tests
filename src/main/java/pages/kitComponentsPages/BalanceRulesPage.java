@@ -13,6 +13,10 @@ public class BalanceRulesPage extends V3Table {
     public BalanceRulesPage(WebDriver driver){
         super(driver);
         //this.xPathNameColumnHeader = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@data-global-balance-rules-sort_by__balance_type]/div");
+        //this.xPathTable = By.xpath("//table[ @data-global-balance-rules-id!='' and  @style!='display: none']");
+        this.xPathOfTable = By.xpath("//table[ @data-global-balance-rules-id!='' and  @style!='display: none']");
+        this.xPathOfTableHeaders = By.xpath("//thead/tr");
+        this.xPathOfClickableHeader = "//thead/tr/th[%d]";
     }
 
 
@@ -20,19 +24,6 @@ public class BalanceRulesPage extends V3Table {
     private By createdAt = By.xpath("//table[@class='v3-table' and @style!='display: none']/thead/tr/th[@class='created-at-col sticky-col w-em-17 sortable']/div");
     private By searchBar = By.xpath("//div[@class='v3-table-button-bar-wrapper']//div[@class='v3-table-button-bar-group' and @style!='display: none']/label/input[@placeholder='SEARCH...']");
 
-
-    public void sortByCreatedAt(){
-        driver.findElement(createdAt).click();
-        String classValue = driver.findElement(createdAt).getAttribute("class");
-        if (classValue.equals("asc")){
-            System.out.println("The element contains the value 'asc'.");
-
-        } else if (classValue.equals("desc")){
-            System.out.println("The element contains the value 'desc'.");
-        } else {
-            System.out.println("Sorting has failed");
-        }
-    }
 
     public void sendKeysSearchBar(String variable){
         driver.findElement(searchBar).click();
